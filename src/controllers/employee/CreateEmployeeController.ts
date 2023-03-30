@@ -3,7 +3,7 @@ import { CreateEmployeeService } from "../../services/employee/CreateEmployeeSer
 
 class CreateEmployeeController {
   async handle(request: Request, response: Response) {
-    const { firstName, lastName, email, age, position, salary } = request.body;
+    const { firstName, lastName, email, age, password } = request.body;
 
     const createEmployeeService = new CreateEmployeeService();
 
@@ -12,10 +12,9 @@ class CreateEmployeeController {
       lastName,
       email,
       age,
-      position,
-      salary,
+      password
     });
-    return response.json(employee);
+    return response.status(201).json(employee);
   }
 }
 export { CreateEmployeeController };

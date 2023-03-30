@@ -33,8 +33,7 @@ class UpdateEmployeeService {
           firstName,
           lastName,
           email,
-          position,
-          salary
+  
         },
 
       })

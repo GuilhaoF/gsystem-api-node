@@ -1,14 +1,26 @@
 import { Router } from "express";
 import { CreateEmployeeController } from "./controllers/employee/CreateEmployeeController";
-import { ListAllEmployeesController } from "./controllers/employee/ListAllEmployeesController";
+
 import { UpdateEmployeeController } from "./controllers/employee/UpdateEmployeeController";
-import { DeleteEmployeeController } from "./controllers/employee/DeleteEmployeeController";
+import { isAuthenticated } from "./middleware/isAutenticated";
+import { AuthEmployeeController } from "./controllers/employee/AuthEmployeeController";
+import { DetailEmployeeController } from "./controllers/employee/DetailEmployeeController";
+import { CreateTicketController } from "./controllers/tickets/CreateTicketController";
+import { ListTicketController } from "./controllers/tickets/ListTicketController";
 
 const router = Router();
 
-router.get("/employees", new ListAllEmployeesController().handle);
+// funcionarios(employees) rotas liberadas
+
+router.post("/employees/session", new AuthEmployeeController().handle);
 router.post("/employees", new CreateEmployeeController().handle);
-router.put("/employees/:id", new UpdateEmployeeController().handle)
-router.delete("/employees/:id", new DeleteEmployeeController().handle)
+
+//rotas privadas
+router.get("/employee/detail", isAuthenticated, new DetailEmployeeController().handle)
+router.put("/employee/update", isAuthenticated, new UpdateEmployeeController().handle)
+
+// chamados (tickets)
+router.get("/tickets", isAuthenticated, new ListTicketController().handle)
+router.post("/ticket", isAuthenticated, new CreateTicketController().handle)
 
 export { router };
