@@ -7,6 +7,7 @@ import { AuthEmployeeController } from "./controllers/employee/AuthEmployeeContr
 import { DetailEmployeeController } from "./controllers/employee/DetailEmployeeController";
 import { CreateTicketController } from "./controllers/tickets/CreateTicketController";
 import { ListTicketController } from "./controllers/tickets/ListTicketController";
+import { DeleteTicketController } from "./controllers/tickets/DeleteTicketController";
 
 const router = Router();
 
@@ -22,5 +23,5 @@ router.put("/employee/update", isAuthenticated, new UpdateEmployeeController().h
 // chamados (tickets)
 router.get("/tickets", isAuthenticated, new ListTicketController().handle)
 router.post("/ticket", isAuthenticated, new CreateTicketController().handle)
-
+router.delete("/ticket", isAuthenticated, new DeleteTicketController().handle)
 export { router };

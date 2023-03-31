@@ -5,11 +5,10 @@
 [x] Atualizar Dados Funcionario
 [x] Tratamento de Erros 
 [x] Cadastrar Chamados
+[x] Deletar Chamados
 [x] Listar todos os Chamados do Funcionario
 [x] Correcoes 
 ````
 # Funcoes a Implementar 
 [] Atualizar Status de chamados
-[] Deletar Chamados
-
 ```
