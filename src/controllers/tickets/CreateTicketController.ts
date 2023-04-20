@@ -14,7 +14,7 @@ class CreateTicketController {
       description,
       status,
     })
-    return response.status(201).json(ticket)
+    return response.json(ticket)
   }
 }
 export { CreateTicketController }

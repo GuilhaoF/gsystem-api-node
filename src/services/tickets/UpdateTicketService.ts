@@ -1,17 +1,16 @@
 import prismaClient from "../../prismaConnect"
 
-
 interface TicketRequest {
   employeeId: string
   ticket_id: string
+  title: string
+  description: string
   status: string
 }
-
-
 class UpdateTicketService {
-  async execute({ employeeId, status = 'Pendent', ticket_id }: TicketRequest) {
+  async execute({ employeeId, title, description, status, ticket_id }: TicketRequest) {
 
-    const employee = await prismaClient.employee.findFirst({
+    const employeeAlreadyExists = await prismaClient.employee.findFirst({
       where: {
         id: employeeId
       }
@@ -21,9 +20,12 @@ class UpdateTicketService {
         id: ticket_id
       },
       data: {
-        status: status
+        title: title,
+        description: description,
+        status: status,
       }
     })
     return ticket
   }
 }
+export { UpdateTicketService }

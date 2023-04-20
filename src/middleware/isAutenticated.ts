@@ -27,7 +27,7 @@ export function isAuthenticated(
     //verificando o token e a security
     const { sub } = verify(
       token,
-      'Secret'
+      process.env.JWT_TOKEN
     ) as Payload
 
     request.employeeId = sub;
@@ -35,6 +35,7 @@ export function isAuthenticated(
     return next();
 
   } catch (err) {
+    console.log(err)
     return response.status(401).end()
   }
 

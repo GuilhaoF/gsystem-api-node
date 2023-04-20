@@ -1,16 +1,14 @@
+import bodyParser from 'body-parser';
 import cors from "cors";
 import express, { Request, Response, NextFunction } from "express";
-import bodyParser from "body-parser";
 import { router } from "./routes";
 import 'express-async-errors'
-
 const app = express();
 
-app.use(express.json()); // recebe as requisicoes com o corpo
+app.use(bodyParser.json({ type: 'application/*+json' }))
 app.use(cors());
+app.use(express.json()); // recebe as requisicoes com o corpo
 app.use(router);
-
-app.use(bodyParser.json());
 
 app.use((error: Error, request: Request, response: Response, next: NextFunction) => {
 

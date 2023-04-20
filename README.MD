@@ -8,7 +8,9 @@
 [x] Deletar Chamados
 [x] Listar todos os Chamados do Funcionario
 [x] Correcoes 
+[x] Limitacao de Taxa
 ````
 # Funcoes a Implementar 
-[] Atualizar Status de chamados
-```
+````
+[x] Atualizar Status de chamados
+````

@@ -4,7 +4,7 @@ interface TicketRequest {
   employeeId: string
   title: string
   description: string
-  status: string
+  status?: string
 }
 
 class CreateTicketService {
@@ -14,17 +14,10 @@ class CreateTicketService {
     const conditionsArray = [
       !title,
       !description,
-      !status
     ]
     if (conditionsArray.indexOf(false)) {
       return { message: 'Erro' }
     }
-    const myTickets = await prismaClient.ticket.count({
-      where: {
-        employeeId: employeeId
-      }
-    })
-
     const employee = await prismaClient.employee.findFirst({
       where: {
         id: employeeId
@@ -32,10 +25,10 @@ class CreateTicketService {
     })
     const ticket = await prismaClient.ticket.create({
       data: {
-        employeeId: employeeId,
         title: title,
         description: description,
         status: status,
+        employeeId: employeeId,
       }
     })
     return ticket

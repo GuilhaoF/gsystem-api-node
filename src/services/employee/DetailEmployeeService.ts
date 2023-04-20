@@ -9,13 +9,11 @@ class DetailEmployeeService {
         id: employeeId
       },
       select: {
+        id: true,
         firstName: true,
         lastName: true,
         email: true,
         age: true,
-        createdAt: true,
-        updatedAt: true
-
       }
     })
     return employee

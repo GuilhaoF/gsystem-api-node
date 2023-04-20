@@ -14,7 +14,7 @@ class CreateEmployeeController {
       age,
       password
     });
-    return response.status(201).json(employee);
+    return response.json(employee);
   }
 }
 export { CreateEmployeeController };

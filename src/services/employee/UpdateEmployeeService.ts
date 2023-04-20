@@ -1,22 +1,20 @@
-import { Request, Response } from "express";
 import prismaClient from "../../prismaConnect";
 
 interface EmployeeRequest {
-  id: number,
-  firstName: string;
-  lastName: string;
-  email: string;
-  position: string;
-  salary: number;
+  employeeId: string
+  firstName: string
+  lastName: string
+  email: string
+  age: number
 }
 
 class UpdateEmployeeService {
-  async execute({ id, firstName, lastName, email, position, salary }: EmployeeRequest) {
+  async execute({ employeeId, firstName, lastName, email, age }: EmployeeRequest) {
     try {
       //verificando se employee existe(primeiro que achar)
       const employeeAlreadyExists = await prismaClient.employee.findFirst({
         where: {
-          id: id
+          id: employeeId
         }
       })
 
@@ -26,14 +24,14 @@ class UpdateEmployeeService {
       //fazendo o update do employee
       const employeeUpdated = await prismaClient.employee.update({
         where: {
-          id: id
+          id: employeeId
         },
         //dados
         data: {
           firstName,
           lastName,
           email,
-  
+          age
         },
 
       })

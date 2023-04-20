@@ -12,7 +12,7 @@ class AuthEmployeeController {
       email,
       password
     })
-    return response.status(200).json(session)
+    return response.json(session)
 
   }
 }

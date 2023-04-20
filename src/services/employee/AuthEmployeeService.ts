@@ -23,22 +23,23 @@ class AuthEmployeeService {
     }
     const token = sign(
       {
-        name: employee.firstName,
+        firstName: employee.firstName,
+        lastName: employee.lastName,
         email: employee.email,
 
       },
-      'Secret',
+      process.env.JWT_TOKEN,
       {
-        subject: String(employee.id),
+        subject: employee.id,
         expiresIn: '30d'
       }
     )
     return {
       id: employee?.id,
-      name: employee?.firstName,
+      firstName: employee?.firstName,
       email: employee?.email,
-      secondName: employee?.lastName,
-      token: token
+      lastName: employee?.lastName,
+      token
     }
 
   }

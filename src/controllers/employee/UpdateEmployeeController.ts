@@ -6,17 +6,17 @@ import { UpdateEmployeeService } from "../../services/employee/UpdateEmployeeSer
 class UpdateEmployeeController {
   async handle(request: Request, response: Response) {
 
-    const { firstName, lastName, email, position, salary } = request.body
-    const { id } = request.params;
+    const { firstName, lastName, email, age } = request.body
+    const employeeId = request.employeeId
 
     const updateEmployee = new UpdateEmployeeService()
+
     const employees = await updateEmployee.execute({
-      id: Number(id),
+      employeeId,
       firstName,
       lastName,
       email,
-      position,
-      salary,
+      age,
     })
     response.status(201).json(employees)
 
