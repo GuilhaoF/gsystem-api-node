@@ -12,6 +12,7 @@ import { CreateTicketController } from "./controllers/tickets/CreateTicketContro
 import { ListTicketController } from "./controllers/tickets/ListTicketController";
 import { DeleteTicketController } from "./controllers/tickets/DeleteTicketController";
 import { UpdateTicketController } from "./controllers/tickets/UpdateTicketController";
+import { DetailTicketController } from "./controllers/tickets/DetailTicketController";
 
 const router = Router();
 
@@ -26,6 +27,7 @@ router.put("/employee/update", isAuthenticated, new UpdateEmployeeController().h
 // chamados (tickets)
 router.get("/tickets", isAuthenticated, new ListTicketController().handle)
 router.post("/ticket", isAuthenticated, new CreateTicketController().handle)
+router.get("/ticket/detail",isAuthenticated,new DetailTicketController().handle)
 router.put("/ticket/update", isAuthenticated, new UpdateTicketController().handle)
 router.delete("/ticket", isAuthenticated, new DeleteTicketController().handle)
 

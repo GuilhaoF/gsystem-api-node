@@ -8,7 +8,7 @@ interface TicketRequest {
 }
 
 class CreateTicketService {
-  async execute({ employeeId, title, description, status }: TicketRequest) {
+  async execute({ employeeId, title, description, status='Aberto' }: TicketRequest) {
 
     //array de condicoes
     const conditionsArray = [
